@@ -1,0 +1,42 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] tokens_n = Console.ReadLine().Split(' ');
+            int n = Convert.ToInt32(tokens_n[0]);
+            int m = Convert.ToInt32(tokens_n[1]);
+            string[] intLine = Console.ReadLine().Split(' ');
+            Dictionary<int, int> matchDic = new Dictionary<int, int>();
+            int key = 0;
+            int resultIndex = 0;
+            for (int i = 1; i <= intLine.Length; i++)
+            {
+                string x = intLine[i - 1].ToString();
+                if (x == m.ToString())
+                {
+                    matchDic.Add(key++, i);
+                }
+            }
+            if (key == 0)
+            {
+                resultIndex = -1;
+            }
+            else
+            {
+                resultIndex = matchDic.Values.Max();
+            }
+            Console.WriteLine(resultIndex);
+            Console.ReadKey();
+        }
+    }
+}
